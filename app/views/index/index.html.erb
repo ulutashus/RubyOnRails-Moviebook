@@ -1,0 +1,22 @@
+<div id="wrapper" style="height:500px">
+  <div class="one-half">
+     <%= image_tag "schema.png" %> 
+  </div>
+
+  <div class="one-half last" align="center">
+    <%= image_tag "logo.png", height:'100px' %> 
+    
+    <br/><br/><br/><br/><br/><br/>
+    <%= form_tag(controller: "index", method: "post") do %>
+      <div class="field">
+        <%= text_field_tag :name %>
+      </div>
+      <div class="field">
+        <%= password_field_tag :pass %>
+      </div>
+      <div class="actions">
+        <%= submit_tag 'Sign in' %>
+      </div>
+    <% end %>
+  </div>
+</div>
