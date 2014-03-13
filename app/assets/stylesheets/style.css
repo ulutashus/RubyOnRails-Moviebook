@@ -6,6 +6,16 @@ html, body, div, h1, h2, h3, h4, h5, h6, p, a, img {
 	background:transparent
 }
 
+.motto {
+    background-image: url(/assets/schema.png);
+    background-repeat: no-repeat;
+    height: 100%;
+    font-family: "Buxton Sketch";
+    font-size: 32px;
+    font-weight: bold;
+    text-align: right;
+}
+
 /*-----------------------------------------------------------------------------------*/
 /*	GENERAL
 /*-----------------------------------------------------------------------------------*/
@@ -14,70 +24,7 @@ body {
 	font-family: "Arial";
 	background-color: #017BCD;
 	color: #565656;
-	font-size: 13px;
-}
-
-html, body {
-	height: 95%;
-}
-
-#footer-wrapper, .push {
-	height: 145px; /* .push must be the same height as .footer */
-}
-
-p {
-	line-height: 25px;
-}
-
-a {
-	text-decoration: none;
-	color: #1f1f1f;
-}
-
-a:hover {
-	text-decoration: none;
-	color: #5d8ba6;
-}
-
-a.more {
-	display: inline-block;
-	color: #5d8ba6;
-}
-
-a.more:hover {
-	text-decoration: underline;
-}
-
-h1, h2, h3, h4, h5, h6 {
-	font-family: 'Puritan20Normal';
-	font-weight: normal;
-	color: #1f1f1f;
-	margin-bottom: 10px;
-}
-
-h1 {
-	font-size: 28px;
-}
-
-h2 {
-	font-size: 25px;
-}
-
-h3 {
-	font-size: 22px;
-	line-height: 26px;
-}
-
-h4 {
-	font-size: 17px;
-}
-
-h5 {
-	font-size: 15px;
-}
-
-h6 {
-	font-size: 14px;
+	font-size: 16px;
 }
 
 /*-----------------------------------------------------------------------------------*/
@@ -94,101 +41,7 @@ h6 {
         left: 0;
         right: 0;
         margin: auto;
-        padding: 20px;
-}
-
-#header-layout {
-	min-width: 960px;
-	margin-bottom: 30px;
-	background: transparent url(images/back.png) repeat-x center bottom;
-}
-
-#header {
-	width: 960px;
-	height: 150px;
-	margin: 0 auto;
-	position: relative;
-	z-index: 999;
-}
-
-#logo {
-	float: left;
-	position: absolute;
-	bottom: 5px;
-	left: 0;
-}
-
-#menu-layout {
-	float: right;
-	position: absolute;
-	bottom: 23px;
-	right: 0;
-}
-#footer-wrapper {
-	height: 45px;
-	margin-top:30px;
-}
-
-#footer {
-	min-width: 960px;
-	height: 45px;
-	background: transparent url(images/back.png) repeat-x top center;
-}
-
-#footer-content {
-	width: 960px;
-	height: 45px;
-	margin: 0 auto;
-	position: relative;
-}
-
-#copyright {
-	float: left;
-	position: absolute;
-	top: 15px;
-	left: 0;
-}
-
-#copyright p {
-	font-family: 'Vladimir Script';
-	color: #ffffff;
-	font-size: 22px;
-	font-style:italic
-	margin: 0;
-}
-
-/*-----------------------------------------------------------------------------------*/
-/*	MENU
-/*-----------------------------------------------------------------------------------*/
-
-.menu {
-	font-family: 'Vladimir Script';
-	font-size: 22px;
-	z-index: 1000;
-	position: relative;
-}
-
-.menu ul {
-	margin: 0;
-	padding: 0;
-	list-style-type: none;
-}
-
-.menu ul li {
-	float: left;
-	margin-left: 25px;
-}
-
-.menu ul li a {
-	color: #ffffff;
-}
-
-.menu ul li a.selected {
-	text-decoration:underline;
-}
-
-.menu ul li a:hover {
-	color: #bbbbbb;
+        padding: 50px;
 }
 
 /*-----------------------------------------------------------------------------------*/
@@ -225,66 +78,4 @@ h6 {
 .last {
 	margin-right:0 !important;
 	clear:right;
-}
-
-/*-----------------------------------------------------------------------------------*/
-/*	TAB
-/*-----------------------------------------------------------------------------------*/
-
-ul#tab-menu {
-	float:left;
-	width: 230px;
-	background-color: #FFF;
-	-moz-box-shadow: 0px 1px 2px #9f9f9f;
-	-webkit-box-shadow: 0px 1px 2px #9f9f9f;
-	box-shadow: 0px 1px 2px #9f9f9f;
-	margin:0 20px 0 0;
-	padding: 0 10px;
-	list-style:none;
-	font-family: 'Puritan20Normal';
-	font-size: 17px;
-}
-
-ul#tab-menu li {
-	background: transparent url(style/images/line.png) bottom repeat-x;
-	cursor: pointer;
-	padding: 20px 10px;
-	margin: 0;
-	color: #565656;
-}
-
-ul#tab-menu li:hover, ul#tab-menu li.selected {
-	text-decoration: underline;
-	color: #5d8ba6;
-}
-
-.tab-wrapper {
-	width:960px;
-}
-
-.tab-content {
-	width: 650px;
-	float:left;
-	padding: 20px;
-	overflow:auto;
-}
-
-.tab-content div.tab {
-	display:none;
-	padding: 0;
-}
-
-.tab-content div.tab.show {
-	display:block;
-}
-
-.tab-content div.tab p {
-	width:650px;
-	overflow: hidden;
-	padding: 0;
-	margin: 0 0 20px 0;
-}
-
-.tab-content div.tab div p {
-	width:100%;
 }

@@ -1,22 +1,19 @@
 <div id="wrapper" style="height:500px">
-  <div class="one-half">
-     <%= image_tag "schema.png" %> 
+  <div class="one-half motto">
+    <br/><br/><br/><br/><br/><br/><br/><br/>
+    <p class="motto-font">watch and share</p>
   </div>
 
-  <div class="one-half last" align="center">
+  <div class="one-half last" style="float:right; width:auto" align="center">
     <%= image_tag "logo.png", height:'100px' %> 
     
-    <br/><br/><br/><br/><br/><br/>
+    <br/><br/><br/><br/>
     <%= form_tag(controller: "index", method: "post") do %>
-      <div class="field">
-        <%= text_field_tag :name %>
-      </div>
-      <div class="field">
-        <%= password_field_tag :pass %>
-      </div>
-      <div class="actions">
-        <%= submit_tag 'Sign in' %>
-      </div>
-    <% end %>
+      <%= text_field_tag :name, nil, :placeholder => "Username", :class => "btn-block" %>
+      <%= password_field_tag :pass, nil, :placeholder => "Password", :class => "btn-block" %>
+      <%= submit_tag 'Sign in', :class => "btn btn-large btn-block btn-primary" %>
+    <%= submit_tag 'Sign up', :class => "btn btn-large btn-block" %>
+    <%= submit_tag 'Download App', :class => "btn btn-large btn-block" %>
+    <% end %>   
   </div>
 </div>
