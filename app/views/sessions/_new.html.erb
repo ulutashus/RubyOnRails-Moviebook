@@ -1,0 +1,13 @@
+<%= form_for(:session, url: sessions_path) do |f| %>
+  <%= f.text_field :name, :placeholder => "Username", :class => "btn-block" %>
+
+  <%= f.password_field :pass, :placeholder => "Password", :class => "btn-block" %>
+
+  <% flash.each do |key, value| %>
+    <div class="alert alert-danger">
+      <p><%= value %></p>
+    </div>
+  <% end %>
+
+  <%= f.submit "Sign in", class: "btn btn-large btn-block btn-primary" %>
+<% end %>

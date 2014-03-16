@@ -2,40 +2,11 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @users }
-    end
-  end
-  
-  def app_sign_in
-    if( params[:security_code] == "ulutashus|aeaytac" )
-      user = User.find_by_name_and_pass(params[:name], params[:pass])
-      if (user != nil )
-        respond_to do |format|
-          format.all {render user.app_data}
-        end
-      end
-    end
-  end
-  
-  def app_sign_up
-    result = false
-    if( params[:security_code] == "ulutashus|aeaytac" )
-        if (User.find_by_name(params[:name]) == nil )
-          @user = User.new
-          @user.name = params[:name]
-          @user.pass = params[:pass]
-          @user.email = params[:email]
-          @user.save()
-          result = true
-        end
-    end
-    
-    respond_to do |format|
-      format.all  { render :text => result }
+    if session[:user_id]
+      @user = User.find(session[:user_id])
+      render 'index'
+    else
+      redirect_to root_url
     end
   end
 

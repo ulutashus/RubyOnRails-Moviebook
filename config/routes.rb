@@ -1,11 +1,14 @@
 Moviebook::Application.routes.draw do
-
-  resources :index
-  resources :users
   root to: "index#index"
 
-  post '/users/app_sign_up', to: 'users#app_sign_up'
-  post '/users/app_sign_in', to: 'users#app_sign_in'
+  resources :index, only: [:create]
+  resources :users
+  resources :sessions, only: [:new, :create, :destroy]
+
+  match '/signout', to: 'sessions#destroy'
+  match '/users/app_sign_up', to: 'users#app_sign_up', via: 'post'
+  match '/users/app_sign_in', to: 'users#app_sign_in', via: 'post'
+#  get "sing_in" => "sessions#new", :as => "sign_in"
  
   # The priority is based upon order of creation:
   # first created -> highest priority.

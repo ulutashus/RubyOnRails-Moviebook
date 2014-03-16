@@ -1,9 +1,9 @@
 class IndexController < ApplicationController
-  def index
-   
-  end
-  
-  def sign_in
-    
+  def index  
+    if session[:user_id]
+      redirect_to users_url
+    else
+      render 'index'
+    end
   end
 end

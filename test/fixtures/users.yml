@@ -2,10 +2,12 @@
 
 one:
   name: MyString
-  pass: MyString
   email: MyString
+  password: MyString
+  app_data: 
 
 two:
   name: MyString
-  pass: MyString
   email: MyString
+  password: MyString
+  app_data: 
