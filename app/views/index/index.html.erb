@@ -1,16 +1,13 @@
-<div id="wrapper" style="height:500px">
-  <div class="one-half motto">
-    <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-    watch and share
+<div class="page mainpage">
+  <div class="one-half motto bottom">
+    <div class="bottom-content">watch and share</div>
   </div>
 
-  <div class="one-half last" style="float:right; width:auto" align="center">
+  <div class="one-half last bottom" style="float: right; width: auto" align="center">
     <%= image_tag "logo.png", width:'350px' %> 
     
-    <br/><br/><br/><br/>
-    <%= render "sessions/new" %>
-    
-    <%= submit_tag "Sign up", class: "btn btn-large btn-block" %>
-    <%= submit_tag  "Download App", class: "btn btn-large btn-block" %>
+    <div class="bottom-content">
+      <%= render "sessions/signin" %>
+    </div>
   </div>
 </div>

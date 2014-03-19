@@ -286,6 +286,7 @@ textarea {
   font-family: inherit;
   font-size: inherit;
   line-height: inherit;
+  height: 35px;
 }
 a {
   color: #428bca;
@@ -1991,9 +1992,10 @@ select[multiple].input-lg {
   right: 15px;
 }
 .btn {
+  height: 40px;
   display: inline-block;
   padding: 6px 12px;
-  margin-bottom: 0;
+  margin-top: 5px;
   font-size: 14px;
   font-weight: normal;
   line-height: 1.42857143;

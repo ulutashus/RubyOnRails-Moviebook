@@ -1,0 +1,13 @@
+<%= form_for(@user) do |f| %>
+  <%= f.text_field :name, :placeholder => "Username", :class => "btn-block" %>
+
+  <%= f.text_field :email, :placeholder => "Email", :class => "btn-block" %>
+
+  <%= f.password_field :password, :placeholder => "Password", :class => "btn-block" %>
+
+  <%= f.password_field :password_confirmation, :placeholder => "Password Again", :class => "btn-block" %>
+
+  <%= render 'shared/error_messages', object: f.object %>
+
+  <%= f.submit "Sign up", class: "btn btn-large btn-block btn-primary" %>
+<% end %>

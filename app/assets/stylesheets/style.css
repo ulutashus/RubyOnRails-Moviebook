@@ -6,14 +6,54 @@ html, body, div, h1, h2, h3, h4, h5, h6, p, a, img {
 	background:transparent
 }
 
+.bottom {
+    position: relative; 
+    height: 100%;
+}
+
 .motto {
     background-image: url(/assets/schema.png);
     background-repeat: no-repeat;
-    height: 100%;
     font-family: "Buxton Sketch";
     font-size: 32px;
     font-weight: bold;
     text-align: right;
+}
+
+.bottom-content {
+    position: absolute; 
+    bottom: 0; 
+    right: 0;
+    width: 100%;
+}
+
+.star-rating {
+    position: relative; 
+    background-image: url(/assets/star.png);
+    background-repeat: no-repeat;
+    font-family: "Buxton Sketch";
+    font-size: 13;
+    font-weight: bold;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+}
+
+.star-box-giga-star {
+    background-image: url(/assets/star.png);
+    background-size: 50px 50px;
+    background-repeat: no-repeat;
+/*    background-position:-180px -71px;*/
+    width:50px;
+    height:50px;
+    line-height:50px;
+    text-align:center;
+    font-size:16px;
+    font-weight:bold;
+    color:white;
+    font-family:tahoma;
+    float:left;
+    margin: -17px 10px 0px -41px;
 }
 
 /*-----------------------------------------------------------------------------------*/
@@ -31,17 +71,25 @@ body {
 /*	LAYOUT
 /*-----------------------------------------------------------------------------------*/
 
-#wrapper {
-	width: 960px;
-        background: white; 
-        box-shadow: 0px 0px 50px 10px rgba(0, 0, 0, 1);
-        position: absolute;
-        top:0;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        margin: auto;
-        padding: 50px;
+.page {
+    width: 960px;
+    background: white;
+    box-shadow: 0px 0px 50px 10px rgba(0, 0, 0, 1);
+    margin: auto;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.mainpage {
+    height: 500px;
+    padding: 50px;
+}
+
+.userpage {
+    padding: 80px;
 }
 
 /*-----------------------------------------------------------------------------------*/

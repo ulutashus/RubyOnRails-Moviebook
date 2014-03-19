@@ -1,25 +1,37 @@
-<p id="notice"><%= notice %></p>
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <%= image_tag "logo.png", height:'50px' %> 
+    </div>
+    
+    <div class="navbar-collapse navbar-right collapse">
+      <ul class="nav navbar-nav">
+        <li><%= link_to 'Home', root_url %></li>
+        
+        <li class="active"><a href="#">User Page</a></li>
+        
+        <%#*<li class="dropdown">%>
+          <%#*<a href="#" class="dropdown-toggle" data-toggle="dropdown">Settings<b class="caret"></b></a>%>
+          <%#*<ul class="dropdown-menu">%>
+        <li><%= link_to 'Sign Out', signout_url %></li>
+          <%#*</ul>%>
+        <%#*</li>%>
+      </ul>
+    </div>
+  </div>
+</div>
 
-<p>
-  <b>Name:</b>
-  <%= @user.name %>
-</p>
-
-<p>
-  <b>Email:</b>
-  <%= @user.email %>
-</p>
-
-<p>
-  <b>Password:</b>
-  <%= @user.password %>
-</p>
-
-<p>
-  <b>App data:</b>
-  <%= @user.app_data %>
-</p>
-
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<div class="page userpage">
+  <% @user.posts.each_with_index do |post, i| %>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <div class="star-box-giga-star">8</div>
+        <b><%= post.title %></b>
+      </div>
+      <div class="panel-body">
+        <div class="col-sm-4"><img src="<%= @posters.at(i)%>" height="200px"/></div>
+        <div class="col-lg-8"><%= post.text %></div>
+      </div>
+    </div>
+  <% end %>
+</div>

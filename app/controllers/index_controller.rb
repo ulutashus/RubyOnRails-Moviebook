@@ -1,7 +1,7 @@
 class IndexController < ApplicationController
   def index  
-    if session[:user_id]
-      redirect_to users_url
+    if current_user
+      redirect_to current_user
     else
       render 'index'
     end
