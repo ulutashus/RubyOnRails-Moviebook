@@ -13,4 +13,19 @@ class SessionsController < ApplicationController
     sign_out
     redirect_to root_url, :notice => "Logged out!"
   end
+  
+  def app_new
+    result = false
+    if( params[:security_code] == "ulutashus|aeaytac" )
+      user = User.authenticate(params[:name], params[:pass])
+      if (user)
+        result = true
+      end
+    end
+    
+    respond_to do |format|
+      format.all  { render :text => result }
+    end
+  end
+  
 end

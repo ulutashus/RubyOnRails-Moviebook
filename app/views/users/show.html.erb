@@ -7,21 +7,33 @@
     <div class="navbar-collapse navbar-right collapse">
       <ul class="nav navbar-nav">
         <li><%= link_to 'Home', root_url %></li>
-        
-        <li class="active"><a href="#">User Page</a></li>
-        
-        <%#*<li class="dropdown">%>
-          <%#*<a href="#" class="dropdown-toggle" data-toggle="dropdown">Settings<b class="caret"></b></a>%>
-          <%#*<ul class="dropdown-menu">%>
+        <li class="active"><%= link_to 'User Page', root_url %></li>
         <li><%= link_to 'Sign Out', signout_url %></li>
-          <%#*</ul>%>
-        <%#*</li>%>
       </ul>
     </div>
   </div>
 </div>
 
-<div class="page userpage">
+<div class="container theme-showcase" style="width:900px; margin-top:80px" role="main">
+  <div class="jumbotron">
+    <div class="row">
+      <div class="col-md-4">
+        <h2><%= @user.name %></h2>
+        <% if !current_user?(@user) %>
+          <% if !current_user.following?(@user) %>
+            <%= button_to "Follow", follow_path(:id => @user.id), :class => "btn btn-large" %>
+          <% else %>
+            <%= button_to "Unfollow", unfollow_path(:id => @user.id), :class => "btn btn-large" %>
+          <% end %>
+        <% end %>
+      </div>
+      <div class="col-md-8 text-right">
+        <h6>Following : <%= @user.followed_users.length %></h6>
+        <h6>Followers : <%= @user.followers.length %></h6>
+      </div>
+    </div>
+  </div>
+  
   <% @user.posts.each_with_index do |post, i| %>
     <div class="panel panel-default">
       <div class="panel-heading">

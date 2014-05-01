@@ -15,9 +15,13 @@ Moviebook::Application.routes.draw do
   root to: "index#index"
 
   match '/signup',  to: 'users#new'
+  match '/app_signup', to: 'users#app_new', via: 'post'
+  match '/follow',  to: 'users#follow'  
+  match '/unfollow',  to: 'users#unfollow'
+
   match '/signin',  to: 'sessions#new'
+  match '/app_signin', to: 'sessions#app_new', via: 'post'
   match '/signout', to: 'sessions#destroy'
-  match '/users/app_signup', to: 'users#app_signup', via: 'post'
-  match '/users/app_signin', to: 'users#app_signin', via: 'post'
+  
   match '/posts/app_post', to: 'posts#app_post', via: 'post'
 end
