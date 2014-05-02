@@ -1,0 +1,26 @@
+<% @posts.each do |post| %>
+<div class="row">
+  <div class="col-md-2">
+    <%= link_to(post.user) do %>
+      <h4 class="text-right" style="color:white"><%= post.user.name %></h4>
+    <% end %>
+  </div>  
+  
+  <div class="col-md-10">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+          <div class="star-box-giga-star"><%= post.score %></div>
+          <%= link_to(post.imdb) do %>
+            <b><%= post.title %></b>
+          <% end %>
+      </div>
+      <div class="panel-body">
+        <div class="col-sm-4"><img src="<%= post.imdb.poster %>" height="200px"/></div>
+        <div class="col-lg-8"><%= post.text %></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+<% end %>
+        

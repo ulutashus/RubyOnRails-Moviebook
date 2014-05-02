@@ -1,0 +1,33 @@
+<div class="jumbotron">
+  <div class="row">
+    <div class="col-md-5">
+      <img src="<%= @movie.poster %>" height="400px"/>
+    </div>
+    <div class="col-md-7 text-center">
+      <h2><%= @movie.name %></h2>
+      <p>(<%= @movie.year %>)</p>
+      <%#*<br/>%>
+      <%#*<ul class="list-group">%>
+        <%#*<li class="list-group-item"></li>%>
+        <%#*<li class="list-group-item"></li>%>
+        <%#*<li class="list-group-item"></li>%>
+        <%#*<li class="list-group-item"></li>%>
+        <%#*<li class="list-group-item"></li>%>
+      <%#*</ul>%>
+    </div>
+  </div>
+</div>
+
+<% @movie.posts.each do |post| %>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <div class="star-box-giga-star">8</div>
+      <%= link_to(post.user) do %>
+        <b><%= post.user.name %></b>
+      <% end %>
+    </div>
+    <div class="panel-body">
+      <%= post.text %>
+    </div>
+  </div>
+<% end %>

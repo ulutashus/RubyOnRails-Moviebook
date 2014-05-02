@@ -24,7 +24,7 @@
     background-image: url(/assets/star.png);
     background-repeat: no-repeat;
     font-family: "Buxton Sketch";
-    font-size: 13;
+    font-size: 13pt;
     font-weight: bold;
     text-align: center;
     padding: 0;
@@ -45,7 +45,7 @@
     color:white;
     font-family:tahoma;
     float:left;
-    margin: -17px 10px 0px -41px;
+    margin: -17px 10px 0px -20px;
 }
 
 /*-----------------------------------------------------------------------------------*/

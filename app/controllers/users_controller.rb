@@ -1,29 +1,17 @@
 require "rubygems"
-require "json"
-require 'net/http'
 
 class UsersController < ApplicationController
+  layout "user_layout"
+  
   # GET /users
   def index
-    if session[:user_id]
-      @user = User.find(session[:user_id])
-      @posters = Array.new 
-      @user.posts.each do |post| 
-          response = Net::HTTP.get_response('www.omdbapi.com', "/?i=#{post.imdb_id}")
-          js = JSON.parse(response.body)
-          @posters.push( js["Poster"] )
-      end
-      render 'index'
-    else
-      redirect_to root_url
-    end
+    redirect_to root_url
   end
 
-  # GET /users/1
+  # GET /users/id
   def show
     @user = User.find_by_name(params[:id])
     if(@user)
-      @followable = !current_user?(@user) && !current_user.following?(@user)
       respond_to do |format|
         format.html # show.html.erb
         format.json { render json: @user }
@@ -55,7 +43,7 @@ class UsersController < ApplicationController
     end
   end
   
-  # GET /users/1/edit
+  # GET /users/id/edit
   def edit
     @user = User.find(params[:id])
   end

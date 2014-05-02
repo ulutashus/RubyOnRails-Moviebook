@@ -1,49 +1,32 @@
-<div class="navbar navbar-default navbar-fixed-top" role="navigation">
-  <div class="container">
-    <div class="navbar-header">
-      <%= image_tag "logo.png", height:'50px' %> 
+<div class="jumbotron">
+  <div class="row">
+    <div class="col-md-10">
+      <h2><%= @user.name %></h2>
+      
     </div>
-    
-    <div class="navbar-collapse navbar-right collapse">
-      <ul class="nav navbar-nav">
-        <li><%= link_to 'Home', root_url %></li>
-        <li class="active"><%= link_to 'User Page', root_url %></li>
-        <li><%= link_to 'Sign Out', signout_url %></li>
-      </ul>
+    <div class="col-md-2 text-center">
+      <h6>Following : <%= @user.followed_users.length %></h6>
+      <h6>Followers : <%= @user.followers.length %></h6>
+      <% if !current_user?(@user) %>
+        <% if !current_user.following?(@user) %>
+          <%= button_to "Follow", follow_path(:id => @user.id), :class => "btn btn-success" %>
+        <% else %>
+          <%= button_to "Unfollow", unfollow_path(:id => @user.id), :class => "btn btn-danger" %>
+        <% end %>
+      <% end %>
     </div>
   </div>
 </div>
 
-<div class="container theme-showcase" style="width:900px; margin-top:80px" role="main">
-  <div class="jumbotron">
-    <div class="row">
-      <div class="col-md-4">
-        <h2><%= @user.name %></h2>
-        <% if !current_user?(@user) %>
-          <% if !current_user.following?(@user) %>
-            <%= button_to "Follow", follow_path(:id => @user.id), :class => "btn btn-large" %>
-          <% else %>
-            <%= button_to "Unfollow", unfollow_path(:id => @user.id), :class => "btn btn-large" %>
-          <% end %>
-        <% end %>
-      </div>
-      <div class="col-md-8 text-right">
-        <h6>Following : <%= @user.followed_users.length %></h6>
-        <h6>Followers : <%= @user.followers.length %></h6>
-      </div>
+<% @user.posts.each do |post| %>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <div class="star-box-giga-star">8</div>
+      <b><%= post.title %></b>
+    </div>
+    <div class="panel-body">
+      <div class="col-sm-4"><img src="<%= post.imdb.poster %>" height="200px"/></div>
+      <div class="col-lg-8"><%= post.text %></div>
     </div>
   </div>
-  
-  <% @user.posts.each_with_index do |post, i| %>
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <div class="star-box-giga-star">8</div>
-        <b><%= post.title %></b>
-      </div>
-      <div class="panel-body">
-        <div class="col-sm-4"><img src="<%= @posters.at(i)%>" height="200px"/></div>
-        <div class="col-lg-8"><%= post.text %></div>
-      </div>
-    </div>
-  <% end %>
-</div>
+<% end %>

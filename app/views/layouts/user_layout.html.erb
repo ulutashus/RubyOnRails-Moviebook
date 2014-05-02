@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Moviebook</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= favicon_link_tag 'icon.ico' %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+  <div class="container">
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <%= image_tag "logo.png", height:'50px' %> 
+        </div>
+
+        <div class="navbar-collapse navbar-right collapse">
+          <ul class="nav navbar-nav">
+            <li><%= link_to 'Home', root_url %></li>
+            <li><%= link_to 'User Page', current_user %></li>
+            <li><%= link_to 'Sign Out', signout_url %></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container theme-showcase" style="width:900px; margin-top:80px" role="main">
+      <%= yield %>
+    </div>
+    
+    <%= debug(params) if Rails.env.development? %>
+  </div>
+  
+</body>
+</html>

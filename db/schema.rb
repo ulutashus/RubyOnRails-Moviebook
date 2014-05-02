@@ -11,7 +11,25 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140319044035) do
+ActiveRecord::Schema.define(:version => 20140502171011) do
+
+  create_table "movies", :force => true do |t|
+    t.string   "imdb_id"
+    t.string   "name",       :null => false
+    t.string   "year"
+    t.string   "poster"
+    t.string   "score"
+    t.integer  "votes"
+    t.string   "genres"
+    t.string   "writers"
+    t.string   "actors"
+    t.string   "countries"
+    t.string   "duration"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "movies", ["imdb_id"], :name => "index_movies_on_imdb_id"
 
   create_table "posts", :force => true do |t|
     t.string   "title"
@@ -23,6 +41,8 @@ ActiveRecord::Schema.define(:version => 20140319044035) do
     t.datetime "updated_at",               :null => false
   end
 
+  add_index "posts", ["imdb_id"], :name => "index_posts_on_imdb_id"
+  add_index "posts", ["user_id", "imdb_id"], :name => "index_posts_on_user_id_and_imdb_id", :unique => true
   add_index "posts", ["user_id"], :name => "index_posts_on_user_id"
 
   create_table "relationships", :force => true do |t|
