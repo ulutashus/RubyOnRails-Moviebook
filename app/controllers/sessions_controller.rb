@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
     user = User.authenticate(params[:session][:name], params[:session][:pass])
     if user
       sign_in user
-      redirect_back_or user
+      redirect_to root_url
     else
       redirect_to root_url, :notice => "Invalid email or password"
     end

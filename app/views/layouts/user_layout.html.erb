@@ -13,14 +13,23 @@
     <div class="navbar navbar-default navbar-fixed-top" role="navigation">
       <div class="container">
         <div class="navbar-header">
-          <%= image_tag "logo.png", height:'50px' %> 
+          <%= link_to (image_tag "logo.png", height:'47px'), root_path %>
         </div>
 
-        <div class="navbar-collapse navbar-right collapse">
+        <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li><%= link_to 'Home', root_url %></li>
-            <li><%= link_to 'User Page', current_user %></li>
-            <li><%= link_to 'Sign Out', signout_url %></li>
+            <li class="col-md-10">
+            <%= form_tag('/search', method: "get", class: 'navbar-form') do %>
+              <%= text_field_tag :id, nil, placeholder: "Search", class: 'form-control' %>
+              <%= submit_tag "Search", :name => nil, :style => 'display:none'%>
+            <% end %>
+            </li>
+          </ul>
+          
+          <ul class="nav navbar-nav navbar-right">
+            <li><%= link_to 'home', root_url %></li>
+            <li><%= link_to current_user.name, current_user %></li>
+            <li><%= link_to 'sign-out', signout_url %></li>
           </ul>
         </div>
       </div>

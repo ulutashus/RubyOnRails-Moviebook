@@ -1,7 +1,6 @@
 require "rubygems"
 
 class UsersController < ApplicationController
-  layout "user_layout"
   
   # GET /users
   def index
@@ -12,17 +11,19 @@ class UsersController < ApplicationController
   def show
     @user = User.find_by_name(params[:id])
     if(@user)
-      respond_to do |format|
-        format.html # show.html.erb
-        format.json { render json: @user }
-      end
+      render :layout => "user_layout"
     else
       redirect_to root_url
     end
   end
 
   def new
-    @user = User.new
+    unless current_user
+      @user = User.new
+      render
+    else
+      redirect_to root_url
+    end
   end
 
   def app_new

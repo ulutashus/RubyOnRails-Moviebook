@@ -1,0 +1,14 @@
+<div class="list-group">
+  <% @movies.each do |movie| %>
+    <%= link_to movie, class: 'list-group-item' do%>
+      <div class="row">
+        <div class="col-md-4">
+          <img src="<%= movie.poster %>" height="200px" width="150px"/>
+        </div>
+        <div class="col-md-8">
+          <h2><%= movie.name %></h2>
+        </div>
+      </div>
+    <%  end %>
+  <% end %>
+</div>

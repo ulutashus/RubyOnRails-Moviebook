@@ -1,12 +1,11 @@
 <div class="jumbotron">
-  <div class="row">
+  <div id="tab-menu" class="row">
     <div class="col-md-10">
-      <h2><%= @user.name %></h2>
-      
+      <li class="selected"><h2><%= @user.name %></h2></li>
     </div>
     <div class="col-md-2 text-center">
-      <h6>Following : <%= @user.followed_users.length %></h6>
-      <h6>Followers : <%= @user.followers.length %></h6>
+      <li><h6>Following : <%= @user.followed_users.length %></h6></li>
+      <li><h6>Followers : <%= @user.followers.length %></h6></li>
       <% if !current_user?(@user) %>
         <% if !current_user.following?(@user) %>
           <%= button_to "Follow", follow_path(:id => @user.id), :class => "btn btn-success" %>
@@ -18,15 +17,45 @@
   </div>
 </div>
 
-<% @user.posts.each do |post| %>
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <div class="star-box-giga-star">8</div>
-      <b><%= post.title %></b>
-    </div>
-    <div class="panel-body">
-      <div class="col-sm-4"><img src="<%= post.imdb.poster %>" height="200px"/></div>
-      <div class="col-lg-8"><%= post.text %></div>
+<div class="tab-content">
+  <div class="tab show">
+    <% @user.posts.each do |post| %>
+      <%= render 'posts/post', post: post %>
+    <% end %>
+  </div>
+
+  <div class="tab">
+    <h4 style="color: white">Following Users</h4>
+    <div class="list-group">
+      <% @user.followed_users.each do |user| %>
+        <%= link_to user.name, user, class: 'list-group-item'%>
+      <% end %>
     </div>
   </div>
-<% end %>
+  
+  <div class="tab">
+    <h4 style="color: white">Follower Users</h4>
+    <div class="list-group">
+      <% @user.followers.each do |user| %>
+        <%= link_to user.name, user, class: 'list-group-item'%>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  $(document).ready(function() {  
+    //Get all the LI from the #tabMenu UL
+    $('#tab-menu li').click(function(){
+      //remove the selected class from all LI    
+      $('#tab-menu li').removeClass('selected');
+      //Reassign the LI
+      $(this).addClass('selected');
+      //Hide all the DIV in .tab-content
+      $('.tab-content div.tab').removeClass('show');
+      $('.tab-content div.tab').slideUp('slow');
+      //Look for the right DIV in boxBody according to the Navigation UL index, therefore, the arrangement is very important.
+      $('.tab-content div.tab:eq(' + $('#tab-menu li').index(this) + ')').slideDown('slow');
+    })
+  });
+</script>

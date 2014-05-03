@@ -1,0 +1,14 @@
+<%= link_to post.imdb do %>
+<div class="panel panel-default">
+  <div class="panel-heading">
+      <div class="star-box-giga-star"><%= post.score %></div>
+      <b><%= post.title %></b>
+  </div>
+  <div class="panel-body">
+    <div class="col-sm-4"  style="margin-left: -15px">
+      <img src="<%= post.imdb.poster %>" height="200px" width="150px"/>
+    </div>
+    <div class="col-sm-7"><%= post.text %></div>
+  </div>
+</div>
+<% end %>

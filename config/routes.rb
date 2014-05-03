@@ -2,16 +2,16 @@ Moviebook::Application.routes.draw do
   root to: "index#index"
 
   resources :users
-  scope ":username", :as => "users" do
-    resources :users
-  end
-  
   resources :movies
-  
+  resources :search, only: [:index]
   resources :sessions, only: [:new, :create, :destroy]
   resources :microposts, only: [:create, :destroy]
   resources :relationships, only: [:create, :destroy]
 
+  scope ":username", :as => "users" do
+    resources :users
+  end
+  
   match '/signup',  to: 'users#new'
   match '/app_signup', to: 'users#app_new', via: 'post'
   match '/follow',  to: 'users#follow'  

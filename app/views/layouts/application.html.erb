@@ -11,7 +11,16 @@
 <body>
 
   <div class="container">
-    <%= yield %>
+    <div class="page mainpage">
+      <div class="one-half motto bottom">
+        <div class="bottom-content">watch and share</div>
+      </div>
+
+      <div class="one-half last bottom" style="float: right; width: auto" align="center">
+        <%= link_to  (image_tag "logo.png", width:'350px'), root_path %>
+        <%= yield %>
+      </div>
+    </div>
     <%= debug(params) if Rails.env.development? %>
   </div>
   

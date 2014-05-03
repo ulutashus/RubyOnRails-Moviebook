@@ -1,3 +1,8 @@
+a:hover {
+    color: #565;
+    background: transparent;
+}
+
 .bottom {
     position: relative; 
     height: 100%;
@@ -19,33 +24,21 @@
     width: 100%;
 }
 
-.star-rating {
-    position: relative; 
-    background-image: url(/assets/star.png);
-    background-repeat: no-repeat;
-    font-family: "Buxton Sketch";
-    font-size: 13pt;
-    font-weight: bold;
-    text-align: center;
-    padding: 0;
-    margin: 0;
-}
-
 .star-box-giga-star {
     background-image: url(/assets/star.png);
-    background-size: 50px 50px;
+    background-size: 80px 80px;
     background-repeat: no-repeat;
 /*    background-position:-180px -71px;*/
-    width:50px;
-    height:50px;
-    line-height:50px;
+    width:80px;
+    height:80px;
+    line-height:85px;
     text-align:center;
-    font-size:16px;
+    font-size:20px;
     font-weight:bold;
     color:white;
     font-family:tahoma;
     float:left;
-    margin: -17px 10px 0px -20px;
+    margin: -30px 10px 0px -40px;
 }
 
 /*-----------------------------------------------------------------------------------*/
@@ -118,4 +111,49 @@ body {
 .last {
 	margin-right:0 !important;
 	clear:right;
+}
+
+/*-----------------------------------------------------------------------------------*/
+/*	TAB
+/*-----------------------------------------------------------------------------------*/
+
+#tab-menu {
+    list-style:none;
+}
+
+#tab-menu li {
+    cursor: pointer;
+    color: #565656;
+}
+
+#tab-menu li:hover, #tab-menu li.selected {
+    text-decoration: underline;
+    color: #5d8ba6;
+}
+
+.tab-wrapper {
+    width:960px;
+}
+
+.tab-content {
+}
+
+.tab-content div.tab {
+    display:none;
+    padding: 0;
+}
+
+.tab-content div.tab.show {
+    display:block;
+}
+
+.tab-content div.tab p {
+    width:650px;
+    overflow: hidden;
+    padding: 0;
+    margin: 0 0 20px 0;
+}
+
+.tab-content div.tab div p {
+    width:100%;
 }

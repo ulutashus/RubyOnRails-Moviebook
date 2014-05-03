@@ -1,26 +1,21 @@
 <% @posts.each do |post| %>
 <div class="row">
-  <div class="col-md-2">
+  <div class="col-md-2 text-right">
     <%= link_to(post.user) do %>
-      <h4 class="text-right" style="color:white"><%= post.user.name %></h4>
+      <h4 style="color:white"><%= post.user.name %></h4>
     <% end %>
+    <small><%= post.created_at.strftime("%d/%m/%Y")%></small><br/>
+    <small><%= post.created_at.strftime("%H:%M")%></small>
   </div>  
   
   <div class="col-md-10">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-          <div class="star-box-giga-star"><%= post.score %></div>
-          <%= link_to(post.imdb) do %>
-            <b><%= post.title %></b>
-          <% end %>
-      </div>
-      <div class="panel-body">
-        <div class="col-sm-4"><img src="<%= post.imdb.poster %>" height="200px"/></div>
-        <div class="col-lg-8"><%= post.text %></div>
-      </div>
-    </div>
+    <%= render 'posts/post', post: post %>
   </div>
 </div>
-    
 <% end %>
         
+<% if @posts.length == 0 %>
+  <div class="jumbotron">
+    <h3 class="text-center">There is not any post...</h3>
+  </div>
+<% end %>
