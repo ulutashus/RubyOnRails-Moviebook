@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140502171011) do
+ActiveRecord::Schema.define(:version => 20140504110959) do
 
   create_table "movies", :force => true do |t|
     t.string   "imdb_id"
@@ -31,14 +31,27 @@ ActiveRecord::Schema.define(:version => 20140502171011) do
 
   add_index "movies", ["imdb_id"], :name => "index_movies_on_imdb_id"
 
+  create_table "post_feelings", :force => true do |t|
+    t.boolean  "like"
+    t.integer  "user_id",    :null => false
+    t.integer  "post_id",    :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "post_feelings", ["post_id"], :name => "index_post_feelings_on_post_id"
+  add_index "post_feelings", ["user_id"], :name => "index_post_feelings_on_user_id"
+
   create_table "posts", :force => true do |t|
     t.string   "title"
     t.text     "text"
     t.integer  "score",      :limit => 10
     t.string   "imdb_id"
     t.integer  "user_id"
-    t.datetime "created_at",               :null => false
-    t.datetime "updated_at",               :null => false
+    t.datetime "created_at",                              :null => false
+    t.datetime "updated_at",                              :null => false
+    t.integer  "like",                     :default => 0
+    t.integer  "unlike",                   :default => 0
   end
 
   add_index "posts", ["imdb_id"], :name => "index_posts_on_imdb_id"

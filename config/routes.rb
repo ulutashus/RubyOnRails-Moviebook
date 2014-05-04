@@ -3,6 +3,7 @@ Moviebook::Application.routes.draw do
 
   resources :users
   resources :movies
+  resources :posts
   resources :search, only: [:index]
   resources :sessions, only: [:new, :create, :destroy]
   resources :microposts, only: [:create, :destroy]

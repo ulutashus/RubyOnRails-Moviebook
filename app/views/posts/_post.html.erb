@@ -1,4 +1,11 @@
-<%= link_to post.imdb do %>
+<% feeling = post.feelings.find_by_user_id(current_user.id) %>
+<% selfpost = (post.user_id == current_user.id) %>
+<% if feeling %>
+  <% likecolor = feeling.like ? 'btn-primary' : 'btn-default' %>
+  <% unlikecolor = !feeling.like ? 'btn-primary' : 'btn-default' %>
+<% end %>
+
+<%= link_to post.movie do %>
 <div class="panel panel-default">
   <div class="panel-heading">
       <div class="star star-bg star-mbook"><%= post.score %></div>
@@ -6,9 +13,19 @@
   </div>
   <div class="panel-body">
     <div class="col-sm-4"  style="margin-left: -15px">
-      <img src="<%= post.imdb.poster %>" height="200px" width="150px"/>
+      <img src="<%= post.movie.poster %>" height="200px" width="150px"/>
     </div>
-    <div class="col-sm-7"><%= post.text %></div>
+    <div class="col-sm-7 bottom" style="height:200px">
+      <%= post.text %>
+      <div class="bottom-content">
+        <%= form_tag(post, method: "get", class: 'navbar-form') do %>
+          <%= submit_tag "Like (#{post.like})", :disabled => selfpost,
+            :class => "btn btn-default #{likecolor}" %>
+          <%= submit_tag "Unlike (#{post.unlike})", :disabled => selfpost,
+            :class => "btn btn-default #{unlikecolor}"%>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>
 <% end %>
