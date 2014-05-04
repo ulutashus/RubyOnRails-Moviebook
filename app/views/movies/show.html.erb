@@ -3,17 +3,31 @@
     <div class="col-md-5">
       <img src="<%= @movie.poster %>" height="400px"/>
     </div>
-    <div class="col-md-7 text-center">
+    <div class="col-md-7 text-center bottom" style="height:400px">
       <h2><%= @movie.name %></h2>
       <p>(<%= @movie.year %>)</p>
-      <%#*<br/>%>
-      <%#*<ul class="list-group">%>
-        <%#*<li class="list-group-item"></li>%>
-        <%#*<li class="list-group-item"></li>%>
-        <%#*<li class="list-group-item"></li>%>
-        <%#*<li class="list-group-item"></li>%>
-        <%#*<li class="list-group-item"></li>%>
-      <%#*</ul>%>
+      
+      <table class="table" style="margin-top:20px">
+        <tr>
+          <td>
+            <div class="star star-md star-mbook star-center"><%= @mbookScore %></div>
+            <%= image_tag "icon.ico", height:'23px' %>
+            <%= @movie.posts.length %>
+          </td>
+          <td>
+            <div class="star star-md star-imdb star-center"><%= @movie.score %></div>
+            <%=  image_tag "imdb.png", height:'20px' %>
+            <%= @movie.votes %>
+          </td>
+        </tr>
+      </table>
+      
+      <table class="table table-bordered table-hover bottom-content" style="margin:0">
+        <tr><td>Genres</td><td><%= @movie.genres %></td></tr>
+        <tr><td>Country</td><td><%= @movie.countries %></td></tr>
+        <tr><td>Writers</td><td><%= @movie.writers %></td></tr>
+        <tr><td>Actors</td><td><%= @movie.actors %></td></tr>
+      </table>
     </div>
   </div>
 </div>
@@ -21,7 +35,7 @@
 <% @movie.posts.each do |post| %>
   <div class="panel panel-default">
     <div class="panel-heading">
-      <div class="star-box-giga-star">8</div>
+      <div class="star star-bg star-mbook">8</div>
       <%= link_to(post.user) do %>
         <b><%= post.user.name %></b>
       <% end %>

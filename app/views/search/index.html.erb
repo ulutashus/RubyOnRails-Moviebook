@@ -1,14 +1,42 @@
-<div class="list-group">
-  <% @movies.each do |movie| %>
-    <%= link_to movie, class: 'list-group-item' do%>
-      <div class="row">
-        <div class="col-md-4">
-          <img src="<%= movie.poster %>" height="200px" width="150px"/>
-        </div>
-        <div class="col-md-8">
-          <h2><%= movie.name %></h2>
-        </div>
-      </div>
-    <%  end %>
-  <% end %>
+<div class="panel-group" id="accordion">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#usersList">
+          Users (<%= @users.length %>)
+        </a>
+      </h4>
+    </div>
+    <div id="usersList" class="panel-collapse collapse">
+      <% @users.each do |user| %>
+        <%= link_to user, class: 'list-group-item' do%>
+            <h4><%= user.name %></h4>
+        <%  end %>
+      <% end %>
+    </div>
+  </div>
+  
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#moviesList">
+          Movies (<%= @movies.length %>)
+        </a>
+      </h4>
+    </div>
+    <div id="moviesList" class="panel-collapse collapse in">
+      <% @movies.each do |movie| %>
+        <%= link_to movie, class: 'list-group-item' do%>
+          <div class="row">
+            <div class="col-md-4">
+              <img src="<%= movie.poster %>" height="200px" width="150px"/>
+            </div>
+            <div class="col-md-8">
+              <h2><%= movie.name %></h2>
+            </div>
+          </div>
+        <%  end %>
+      <% end %>
+    </div>
+  </div>
 </div>

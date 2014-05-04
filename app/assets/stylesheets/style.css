@@ -24,21 +24,44 @@ a:hover {
     width: 100%;
 }
 
-.star-box-giga-star {
-    background-image: url(/assets/star.png);
-    background-size: 80px 80px;
+.star {
     background-repeat: no-repeat;
-/*    background-position:-180px -71px;*/
-    width:80px;
-    height:80px;
-    line-height:85px;
     text-align:center;
-    font-size:20px;
     font-weight:bold;
     color:white;
     font-family:tahoma;
     float:left;
     margin: -30px 10px 0px -40px;
+}
+
+.star-bg {
+    background-size: 80px 80px;
+    width:80px;
+    height:80px;
+    line-height:85px;
+    font-size:20px;
+}
+
+.star-md {
+    background-size: 50px 50px;
+    width:50px;
+    height:50px;
+    line-height:55px;
+    font-size:14px;
+}
+
+.star-mbook {
+    background-image: url(/assets/star_blue.png);
+}
+
+.star-imdb {
+    background-image: url(/assets/star_orange.png);
+}
+
+.star-center {
+    float: none;
+    display: table;
+    margin: 0 auto;
 }
 
 /*-----------------------------------------------------------------------------------*/
@@ -86,11 +109,11 @@ body {
 }
 
 .one-third {
-	width:30.66%;
+	width:30%;
 }
 
 .two-third {
-	width:65.33%;
+	width:60%;
 }
 
 .one-fifth {
