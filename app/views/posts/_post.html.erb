@@ -13,7 +13,7 @@
   </div>
   <div class="panel-body">
     <div class="col-sm-4"  style="margin-left: -15px">
-      <img src="<%= post.movie.poster %>" height="200px" width="150px"/>
+      <%= image_tag post.movie.poster, height: '200px', width: '150px' %>
     </div>
     <div class="col-sm-7 bottom" style="height:200px">
       <%= post.text %>

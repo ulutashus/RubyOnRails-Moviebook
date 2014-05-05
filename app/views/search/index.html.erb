@@ -28,11 +28,11 @@
       <% @movies.each do |movie| %>
         <%= link_to movie, class: 'list-group-item' do%>
           <div class="row">
-            <div class="col-md-4">
-              <img src="<%= movie.poster %>" height="200px" width="150px"/>
+            <div class="col-md-3">
+              <%= image_tag movie.poster, height: '100px', width: '75px' %>
             </div>
-            <div class="col-md-8">
-              <h2><%= movie.name %></h2>
+            <div class="col-md-9">
+              <h4><%= movie.name %></h4>
             </div>
           </div>
         <%  end %>

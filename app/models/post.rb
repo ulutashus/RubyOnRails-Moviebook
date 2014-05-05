@@ -1,6 +1,3 @@
-require 'json'
-require 'net/http'
-
 class Post < ActiveRecord::Base
   attr_accessible :imdb_id, :score, :text, :title, :user_id, :like, :unlike
   belongs_to :user, class_name: :User
@@ -11,18 +8,7 @@ class Post < ActiveRecord::Base
   after_save do
     movie = Movie.find_by_imdb_id(imdb_id)
     unless (movie)
-      response = Net::HTTP.get_response('www.omdbapi.com', "/?i=#{imdb_id}")
-      js = JSON.parse(response.body)
-      movie = Movie.new({:imdb_id => imdb_id, :name => title})
-      movie.actors = js['Actors']
-      movie.countries = js['Country']
-      movie.duration = js['Runtime']
-      movie.genres = js['Genre']
-      movie.poster = js['Poster']
-      movie.score = js['imdbRating']
-      movie.votes = js['imdbVotes']
-      movie.writers = js['Writer']
-      movie.year = js['Year']
+      movie = Movie.fetch_from_imdb(imdb_id)
       movie.save
     end
   end

@@ -1,7 +1,7 @@
 <div class="jumbotron">
   <div class="row">
     <div class="col-md-5">
-      <img src="<%= @movie.poster %>" height="400px"/>
+      <%= image_tag @movie.poster, height: '400px' %>
     </div>
     <div class="col-md-7 text-center bottom" style="height:400px">
       <h2><%= @movie.name %></h2>
@@ -35,7 +35,7 @@
 <% @movie.posts.each do |post| %>
   <div class="panel panel-default">
     <div class="panel-heading">
-      <div class="star star-bg star-mbook">8</div>
+      <div class="star star-bg star-mbook"><%= post.score  %></div>
       <%= link_to(post.user) do %>
         <b><%= post.user.name %></b>
       <% end %>
