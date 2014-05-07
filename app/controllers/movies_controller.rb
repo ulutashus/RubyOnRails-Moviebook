@@ -20,4 +20,15 @@ class MoviesController < ApplicationController
       redirect_to root_url
     end
   end
+  
+  def add_list
+    if Movie.find(params[:id])
+      watch = WatchItem.new({
+        :user_id  => current_user.id,
+        :movie_id => params[:id]
+      })
+      watch.save
+    end
+    redirect_to :back
+  end
 end

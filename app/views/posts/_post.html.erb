@@ -18,7 +18,15 @@
     <div class="col-sm-7 bottom" style="height:200px">
       <%= post.text %>
       <div class="bottom-content">
-        <%= form_tag(post, method: "get", class: 'navbar-form') do %>
+        <%= form_tag(add_list_path(:id => post.movie.id), class: 'navbar-form', style: 'float: left') do %>
+          <% if !current_user.has_watch_item?(post.movie) %>
+            <%= submit_tag "Add to List", :class => "btn btn-default" %>
+          <% else %>
+            <%= submit_tag "Added", :disabled => true, :class => "btn btn-primary" %>
+          <% end %>
+        <% end %>
+        
+        <%= form_tag(post, method: "get", class: 'navbar-form', style: 'float: left') do %>
           <%= submit_tag "Like (#{post.like})", :disabled => selfpost,
             :class => "btn btn-default #{likecolor}" %>
           <%= submit_tag "Unlike (#{post.unlike})", :disabled => selfpost,

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140504110959) do
+ActiveRecord::Schema.define(:version => 20140506223054) do
 
   create_table "movies", :force => true do |t|
     t.string   "imdb_id"
@@ -78,5 +78,17 @@ ActiveRecord::Schema.define(:version => 20140504110959) do
     t.datetime "updated_at",     :null => false
     t.string   "remember_token"
   end
+
+  create_table "watch_items", :force => true do |t|
+    t.integer  "user_id",                       :null => false
+    t.integer  "movie_id",                      :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+    t.boolean  "sync",       :default => false
+  end
+
+  add_index "watch_items", ["movie_id"], :name => "index_watch_items_on_movie_id"
+  add_index "watch_items", ["user_id", "movie_id"], :name => "index_watch_items_on_user_id_and_movie_id", :unique => true
+  add_index "watch_items", ["user_id"], :name => "index_watch_items_on_user_id"
 
 end

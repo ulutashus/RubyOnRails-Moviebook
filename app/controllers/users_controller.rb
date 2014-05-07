@@ -25,24 +25,6 @@ class UsersController < ApplicationController
       redirect_to root_url
     end
   end
-
-  def app_new
-    result = false
-    if( params[:security_code] == "ulutashus|aeaytac" )
-        if (User.find_by_name(params[:name]) == nil )
-          @user = User.new
-          @user.name = params[:name]
-          @user.pass = params[:pass]
-          @user.email = params[:email]
-          @user.save()
-          result = true
-        end
-    end
-    
-    respond_to do |format|
-      format.all  { render :text => result }
-    end
-  end
   
   # GET /users/id/edit
   def edit

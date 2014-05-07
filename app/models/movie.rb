@@ -6,6 +6,18 @@ class Movie < ActiveRecord::Base
   attr_accessible :name, :imdb_id, :poster
   has_many :posts, foreign_key: :imdb_id, primary_key: :imdb_id ,dependent: :destroy
   
+  before_validation  do
+    if poster
+      image = "app/assets/images/covers/#{self.imdb_id}.png"
+      file = open(image, 'wb') do |file|
+        file << open(poster).read
+      end
+      self.poster = "covers/#{imdb_id}.png"
+    else
+      self.poster = "covers/nocover.png"
+    end
+  end
+  
   def self.fetch_from_imdb (imdbid)
     response = Net::HTTP.get_response('www.omdbapi.com', "/?i=#{imdbid}")
     js = JSON.parse(response.body)
@@ -19,12 +31,8 @@ class Movie < ActiveRecord::Base
     movie.writers = js['Writer']
     movie.year = js['Year']
     # save poster to server
-    if js['Poster']
-      image = "app/assets/images/covers/#{imdbid}.png"
-      file = open(image, 'wb') do |file|
-        file << open(js['Poster']).read
-      end
-      movie.poster = "covers/#{imdbid}.png"
+    if js['Poster'] != 'N/A'
+      movie.poster = js['Poster']
     end
     return movie
   end

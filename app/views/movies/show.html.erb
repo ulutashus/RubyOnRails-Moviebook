@@ -1,5 +1,5 @@
-<div class="jumbotron">
-  <div class="row">
+<div class="jumbotron bottom">
+  <div class="row" style="margin-bottom: 40px">
     <div class="col-md-5">
       <%= image_tag @movie.poster, height: '400px' %>
     </div>
@@ -29,6 +29,16 @@
         <tr><td>Actors</td><td><%= @movie.actors %></td></tr>
       </table>
     </div>
+  </div>
+  
+  <div class="row text-center bottom-content" style="margin: 0px">
+    <% if !current_user.has_watch_item?(@movie) %>
+      <%= button_to "Add to List", add_list_path(:id => @movie.id), 
+        :class => "btn btn-block btn-default" %>
+    <% else %>
+      <%= button_to "Already in List", nil, :disabled => true, 
+        :class => "btn btn-block btn-primary" %>
+    <% end %>
   </div>
 </div>
 

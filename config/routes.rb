@@ -13,14 +13,19 @@ Moviebook::Application.routes.draw do
     resources :users
   end
   
+  # user routes
   match '/signup',  to: 'users#new'
-  match '/app_signup', to: 'users#app_new', via: 'post'
   match '/follow',  to: 'users#follow'  
   match '/unfollow',  to: 'users#unfollow'
-
+  # session routes
   match '/signin',  to: 'sessions#new'
-  match '/app_signin', to: 'sessions#app_new', via: 'post'
   match '/signout', to: 'sessions#destroy'
-  
-  match '/app_post', to: 'posts#app_post', via: 'post'
+  # movie routes
+  match '/add_list', to: 'movies#add_list'
+  # app routes
+  match '/app_post', to: 'application#app_post', via: 'post'
+  match '/app_signup', to: 'application#app_signup', via: 'post'
+  match '/app_signin', to: 'application#app_signin', via: 'post'
+  match '/app_addwatch', to: 'application#app_addwatch', via: 'post'
+  match '/app_sync', to: 'application#app_sync', via: 'post'
 end
